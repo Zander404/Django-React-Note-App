@@ -6,6 +6,9 @@ from rest_framework import status
 from .models import Note
 from .serializers import NoteSerializer
 from .utils import getNotesList, getNoteDetail, createNote, updateNote, deleteNote
+from django_nextjs.render import render_nextjs_page_sync
+def index(request):
+    return render_nextjs_page_sync(request)
 
 
 # Create your views here.

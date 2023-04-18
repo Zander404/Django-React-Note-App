@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'notes.apps.NotesConfig',
     'rest_framework',
     'corsheaders',
+    "django_nextjs",
 ]
 
 MIDDLEWARE = [
@@ -65,7 +66,9 @@ ROOT_URLCONF = 'back.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [
+            BASE_DIR / 'template'
+        ]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -128,6 +131,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'front/dist'
+# ]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -145,3 +152,8 @@ REST_FRAMEWORK = {
 #
 # ]
 CORS_ALLOW_ALL_ORIGINS = True
+
+NEXTJS_SETTINGS = {
+    "nextjs_server_url": "http://127.0.0.1:3000",
+}
+APPEND_SLASH = False
