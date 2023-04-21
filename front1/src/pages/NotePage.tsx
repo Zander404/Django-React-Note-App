@@ -4,9 +4,9 @@ import { ArrowLeft } from '../components/Button/ArrowLeft';
 
 
 
-const NotePage = ({ history }:any) => {
+const NotePage = ({ history }: any) => {
     const { id } = useParams()
-    let [note, setNote]:any = useState("")
+    let [note, setNote]: any = useState("")
 
     useEffect(() => {
         getNote()
@@ -51,7 +51,7 @@ const NotePage = ({ history }:any) => {
         })
     }
 
-    let handleChange = (value:any) => {
+    let handleChange = (value: any) => {
         setNote((note: any) => ({ ...note, 'body': value }))
         console.log('Handle Change:', note)
     }
@@ -68,31 +68,41 @@ const NotePage = ({ history }:any) => {
 
     return (
 
-        <div className="note card w-96 bg-primary text-primary-content  ">
-            <h1>Note#{note?.id}</h1>
+        <div className="mt-24 mx-2 px-8 text-black note card w-[32rem] h-full bg-primary outline-accent shadow-slate-700">
+            <h3 className={"my-3 w-12 justify-center px-2"}>
+                <Link to="/">
+                    <button className={' btn bg-secondary shadow-md hover:bg-accent shadow-slate-800'} onClick={handleSubmit}>
+                        <ArrowLeft />
+                    </button>
+                </Link>
+            </h3>
+            <h1 className={' font-serif font-xs font-bold mx-4 py-3 text-bold'}>Nota: {note?.id}</h1>
 
-            <div className="">
-                <h3>
-                    <Link to="/">
-                        <div onClick={handleSubmit}>
-                            <ArrowLeft />
-                        </div>
-                    </Link>
-                </h3>
+            <textarea className={'justify-center px-4 mx-2 bg-white outline rounded-md h-32 max-h-max min-w-max textarea textarea-bordered textarea-lg w-full'} onChange={(e) => handleChange(e.target.value)} value={note?.body} />
+
+
+            <div className="flex justify-end ">
+
                 {id !== 'new' ? (
-                    <Link to="/">
-                        <button className='btn' onClick={deleteNote}>Delete</button>
-                    </Link>
+                    <div className={'flex justify-between m-2 gap-2'}>
+                        <Link to="/">
+                            <button className={'btn bg-secondary shadow-md hover:bg-accent shadow-slate-800'} onClick={deleteNote}>Delete</button>
+                        </Link>
+                        <Link to="/">
+                            <button className={'btn bg-secondary shadow-md hover:bg-accent shadow-slate-800'} onClick={handleSubmit}>Salvar</button>
+                        </Link>
+                    </div>
+
                 ) : (
-                    <Link to="/">
-                        <button className='btn' onClick={handleSubmit}>Done</button>
-                    </Link>
+                    <div className={'flex justify-between m-2 gap-2'}>
+                        <Link to="/">
+                            <button className={'btn bg-secondary shadow-md hover:bg-accent shadow-slate-800'}>Cancelar</button>
+                        </Link>
+                        <Link to="/">
+                            <button className='btn bg-secondary shadow-md hover:bg-accent shadow-slate-800' onClick={handleSubmit}>Salvar</button>
+                        </Link>
+                    </div>
                 )}
-            </div>
-
-            <textarea onChange={(e) => handleChange(e.target.value)} value={note?.body} />
-
-            <div className="card-actions justify-end">
             </div>
         </div>
 

@@ -12,7 +12,7 @@ import {
 
 function App() {
   return (
-    <div className="flex justify-center">
+    <div className="min-w-screen min-h-screen bg-base flex justify-center">
       <BrowserRouter>
         <Routes>
 
